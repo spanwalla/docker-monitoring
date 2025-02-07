@@ -1,0 +1,74 @@
+networks:
+  net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  rabbitmq_data:
+
+services:
+  backend:
+    build: ./backend
+    environment:
+      PG_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}
+      RMQ_URL: amqp://${RMQ_USER}:${RMQ_PASSWORD}@rabbitmq:${RMQ_PORT}/
+      CONFIG_PATH: ${CONFIG_PATH}
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - rabbitmq
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/logs:/logs
+    networks:
+      - net
+
+  frontend:
+    build: ./frontend
+    environment:
+      VITE_BACKEND_HOST: backend
+      VITE_BACKEND_PORT: "8080"
+    depends_on:
+      - backend
+    ports:
+      - "35822:80"
+    networks:
+      - net
+
+  postgres:
+    image: postgres:17.2-alpine3.21
+    environment:
+      POSTGRES_HOST: "localhost"
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - net
+
+  rabbitmq:
+    image: rabbitmq:4.0.5-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RMQ_PASSWORD}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - net
+    ports:
+      - ${RMQ_PORT}:${RMQ_PORT}
+      - "15672:15672"
+
+  pinger:
+    build: ./pinger
+    network_mode: host
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
