@@ -12,12 +12,12 @@ cd docker-monitoring
 git clone --recurse-submodules https://github.com/spanwalla/docker-monitoring
 cd docker-monitoring
 ```
-3. Создайте файл `.env` в корневом каталоге проекта, вы можете взять за основу файл [.env.example](.env.example)
-4. Для запуска контейнеров выполните команду
+2. Создайте файл `.env` в корневом каталоге проекта, вы можете взять за основу файл [.env.example](.env.example)
+3. Для запуска контейнеров выполните команду
 ```
 docker-compose up --build -d
 ```
-5. Для остановки используйте команду
+4. Для остановки используйте команду
 ```
 docker-compose down --remove-orphans
 ```
