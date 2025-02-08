@@ -34,16 +34,21 @@ docker-compose down --remove-orphans
 
 ## Демонстрация
 1. Без данных.
+
 ![Screenshot 2025-02-08 110139](https://github.com/user-attachments/assets/91b4db32-8d38-421e-8663-6b8abee2a2ca)
 
 2. Просмотр информации от нескольких пингеров (реализован в виде расширяемой таблицы).
+
 ![Screenshot 2025-02-08 112056](https://github.com/user-attachments/assets/000e356e-daa5-499c-b167-1775cd3bfab6)
 
 3. Запрос на сохранение отчёта в Postman.
+
 ![Screenshot 2025-02-08 115616](https://github.com/user-attachments/assets/ef4a6520-2f86-4a9f-bcbb-b8ff13ca5800)
 
 4. Интерактивность
+
 ![tocropandgif-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2edf24e9-b105-458b-ab11-62c528444234)
 
 5. Обновление информации без перезагрузки
+
 ![tocropandgif-ezgif com-video-to-gif-converter (1)](https://github.com/user-attachments/assets/f82198a9-8b78-45bb-8636-b27160ed8d80)
