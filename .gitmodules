@@ -1,6 +1,6 @@
 [submodule "backend"]
 	path = backend
-	url = git@github.com:spanwalla/docker-monitoring-backend.git
+	url = https://github.com/spanwalla/docker-monitoring-backend
 [submodule "pinger"]
 	path = pinger
 	url = https://github.com/spanwalla/docker-monitoring-pinger
