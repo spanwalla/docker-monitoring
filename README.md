@@ -17,6 +17,8 @@ docker-compose up --build -d
 docker-compose down --remove-orphans
 ```
 
+Сервис будет доступен на портах **8080** (backend) и **35822** (frontend).
+
 В случае ошибок стоит посмотреть логи контейнеров (`docker logs <имя контейнера>`), а также лог запросов к бэкенд-серверу в каталоге `backend/logs/requests.log`.
 
 ## Спорные вопросы и их решения
