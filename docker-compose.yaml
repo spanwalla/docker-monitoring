@@ -12,9 +12,7 @@ services:
     environment:
       PG_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT}/${POSTGRES_DB}
       RMQ_URL: amqp://${RMQ_USER}:${RMQ_PASSWORD}@rabbitmq:${RMQ_PORT}/
-      CONFIG_PATH: ${CONFIG_PATH}
-    env_file:
-      - .env
+    env_file: .env
     depends_on:
       - postgres
       - rabbitmq
@@ -66,8 +64,9 @@ services:
   pinger:
     build: ./pinger
     network_mode: host
-    env_file:
-      - .env
+    environment:
+      PINGER_NAME: ${PINGER_NAME}
+      PINGER_PASSWORD: ${PINGER_PASSWORD}
     depends_on:
       - backend
     volumes:
