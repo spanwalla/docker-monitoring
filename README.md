@@ -7,6 +7,11 @@
 git clone --recurse-submodules git@github.com:spanwalla/docker-monitoring.git
 cd docker-monitoring
 ```
+Альтернативный вариант, если есть проблемы с SSH-ключом:
+```
+git clone --recurse-submodules https://github.com/spanwalla/docker-monitoring
+cd docker-monitoring
+```
 3. Создайте файл `.env` в корневом каталоге проекта, вы можете взять за основу файл [.env.example](.env.example)
 4. Для запуска контейнеров выполните команду
 ```
