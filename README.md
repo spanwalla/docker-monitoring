@@ -17,7 +17,7 @@ cd docker-monitoring
 ```
 docker-compose up --build -d
 ```
-6. Для остановки используйте команду
+5. Для остановки используйте команду
 ```
 docker-compose down --remove-orphans
 ```
